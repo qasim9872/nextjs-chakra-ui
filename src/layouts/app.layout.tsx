@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 
-import { Footer } from "@components";
+import { Footer } from "@components/app/footer/footer";
 import { Navbar } from "@components/app/navbar/navbar.component";
 
 import { navItems } from "src/constants/nav.constants";
