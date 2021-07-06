@@ -1,5 +1,6 @@
-import React from "react";
+import React, { ComponentProps } from "react";
 import {
+    chakra,
     Box,
     Flex,
     Text,
@@ -17,24 +18,39 @@ import { NavItem } from "./nav-item";
 import { DesktopNav } from "./navbar-desktop.component";
 import { MobileNav } from "./navbar-mobile.component";
 
+const NavbarWrapper = chakra(Box);
+
+const CollapsibleNavbar: React.FC<ComponentProps<typeof Collapse>> = ({
+    children,
+    ...props
+}) => (
+    <Collapse animateOpacity {...props}>
+        {children}
+    </Collapse>
+);
+
+const NavbarRowWrapper = chakra(Flex, {
+    baseStyle: {
+        minH: "60px",
+        py: { base: 2 },
+        px: { base: 4 },
+        borderBottom: 1,
+        borderStyle: "solid",
+        align: "center",
+        bg: "white",
+        color: "gray.600",
+        borderColor: "gray.200",
+    },
+});
+
 export const Navbar: React.FC<{ navItems: Array<NavItem> }> = ({
     navItems,
 }) => {
     const { isOpen, onToggle } = useDisclosure();
 
     return (
-        <Box>
-            <Flex
-                bg={useColorModeValue("white", "gray.800")}
-                color={useColorModeValue("gray.600", "white")}
-                minH={"60px"}
-                py={{ base: 2 }}
-                px={{ base: 4 }}
-                borderBottom={1}
-                borderStyle={"solid"}
-                borderColor={useColorModeValue("gray.200", "gray.900")}
-                align={"center"}
-            >
+        <NavbarWrapper>
+            <NavbarRowWrapper>
                 <Flex
                     flex={{ base: 1, md: "auto" }}
                     ml={{ base: -2 }}
@@ -96,11 +112,11 @@ export const Navbar: React.FC<{ navItems: Array<NavItem> }> = ({
                         Get In Touch
                     </Button>
                 </Stack>
-            </Flex>
+            </NavbarRowWrapper>
 
-            <Collapse in={isOpen} animateOpacity>
+            <CollapsibleNavbar in={isOpen}>
                 <MobileNav navItems={navItems} />
-            </Collapse>
-        </Box>
+            </CollapsibleNavbar>
+        </NavbarWrapper>
     );
 };
