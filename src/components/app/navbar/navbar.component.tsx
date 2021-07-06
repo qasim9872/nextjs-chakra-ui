@@ -83,11 +83,15 @@ export const Navbar: React.FC<{ navItems: Array<NavItem> }> = ({
                     spacing={6}
                 >
                     <Button
-                        as={"a"}
+                        display={{ base: "none", md: "inline-flex" }}
                         fontSize={"sm"}
-                        fontWeight={400}
-                        variant={"link"}
+                        fontWeight={600}
+                        color={"white"}
+                        bg={"pink.400"}
                         href={"#"}
+                        _hover={{
+                            bg: "pink.300",
+                        }}
                     >
                         Get In Touch
                     </Button>
