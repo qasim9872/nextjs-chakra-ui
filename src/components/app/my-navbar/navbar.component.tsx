@@ -57,17 +57,14 @@ export const Navbar: React.FC<{
                     justify={"flex-end"}
                     direction={"row"}
                     spacing={6}
+                    alignItems="center"
                 >
                     <Button
-                        display={{ base: "none", md: "inline-flex" }}
+                        href="/hello"
+                        variant="cta"
                         fontSize={"sm"}
                         fontWeight={600}
-                        color={"white"}
-                        bg={"brand.400"}
-                        href={"#"}
-                        _hover={{
-                            bg: "brand.600",
-                        }}
+                        display={{ base: "none", md: "inline-flex" }}
                     >
                         Get In Touch
                     </Button>
