@@ -1,5 +1,5 @@
 import { Stack } from "@chakra-ui/react";
-import { MobileNavItem } from "@components/app/navbar/navbar-mobile.component";
+import { MobileNavItem } from "./mobile-nav-item.component";
 import React from "react";
 import { NavItem } from "src/interfaces/nav-item";
 
