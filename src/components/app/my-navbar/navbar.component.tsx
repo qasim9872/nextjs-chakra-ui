@@ -1,7 +1,17 @@
 import React from "react";
-import { Flex, HStack, useDisclosure } from "@chakra-ui/react";
+import {
+    Box,
+    Button,
+    Collapse,
+    Flex,
+    Stack,
+    useDisclosure,
+} from "@chakra-ui/react";
 
 import { NavItem } from "src/interfaces/nav-item";
+import { MenuToggle } from "./menu-toggle.component";
+import { MobileNav } from "./mobile/mobile-nav.component";
+import { DesktopNav } from "./desktop/desktop-nav.component";
 
 export const Navbar: React.FC<{
     navItems: NavItem[];
@@ -10,40 +20,63 @@ export const Navbar: React.FC<{
     const { isOpen, onToggle } = useDisclosure();
 
     return (
-        <HStack
-            as="nav"
-            w="100%"
-            minH="60px"
-            spacing={0}
-            align="center"
-            py={{ base: 2 }}
-            px={{ base: 4 }}
-            borderBottom={1}
-            borderStyle="solid"
-            justifyContent="space-between"
-            backgroundColor="bg.secondary"
-            color="gray.600"
-            borderColor="gray.200"
-        >
-            <Flex alignItems="center">
-                <Flex py="px" justifyContent="center" bgColor="gray.100">
-                    <Logo />
+        <Box as="nav">
+            <Flex
+                w="100%"
+                minH="60px"
+                py={{ base: 2 }}
+                px={{ base: 4 }}
+                borderBottom={1}
+                borderStyle="solid"
+                justifyContent="space-between"
+                backgroundColor="bg.primary"
+                borderColor="bg.secondary"
+            >
+                <Flex
+                    ml={{ base: -2 }}
+                    flex={{ base: 1, md: "auto" }}
+                    display={{ base: "flex", md: "none" }}
+                >
+                    <MenuToggle isOpen={isOpen} onToggle={onToggle} />
                 </Flex>
 
                 <Flex
-                    ml={10}
-                    bgColor="green.200"
-                    display={{ base: "none", md: "flex" }}
+                    flex={{ base: 1 }}
+                    alignItems="center"
+                    justify={{ base: "center", md: "start" }}
                 >
-                    <span>Nav Items 1</span>
-                    <span>Nav Items 2</span>
-                    <span>Nav Items 3</span>
+                    <Logo />
+
+                    <Flex ml={10} display={{ base: "none", md: "flex" }}>
+                        <DesktopNav navItems={navItems} />
+                    </Flex>
                 </Flex>
+
+                <Stack
+                    flex={{ base: 1, md: 0 }}
+                    justify={"flex-end"}
+                    direction={"row"}
+                    spacing={6}
+                >
+                    <Button
+                        display={{ base: "none", md: "inline-flex" }}
+                        fontSize={"sm"}
+                        fontWeight={600}
+                        color={"white"}
+                        bg={"brand.400"}
+                        href={"#"}
+                        _hover={{
+                            bg: "brand.600",
+                        }}
+                    >
+                        Get In Touch
+                    </Button>
+                </Stack>
             </Flex>
 
-            <Flex bgColor="green.200">
-                <p>Call To Action</p>
-            </Flex>
-        </HStack>
+            <Collapse in={isOpen} animateOpacity>
+                <MobileNav navItems={navItems} />
+            </Collapse>
+        </Box>
     );
 };

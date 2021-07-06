@@ -1,8 +1,15 @@
 export default {
     brand: {
-        primary: "#2182BD",
-        secondary: "#5282BD",
-        muted: "#C6DAF7",
+        50: "#d8fdff",
+        100: "#acf0ff",
+        200: "#7de6fe",
+        300: "#4cdafb",
+        400: "#20d0f9",
+        500: "#06b6df",
+        600: "#008eaf",
+        700: "#00657e",
+        800: "#003e4d",
+        900: "#00161f",
     },
     ui: {
         primary: "#262626",
