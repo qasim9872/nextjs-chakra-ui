@@ -5,6 +5,9 @@ type GlobalStyles = Pick<ThemeOverride, "styles">;
 export default {
     styles: {
         global: {
+            body: {
+                backgroundColor: "bg.primary",
+            },
             h1: {
                 fontWeight: 500,
                 marginBottom: "0.5em",
