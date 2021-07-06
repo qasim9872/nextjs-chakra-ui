@@ -1,47 +1,24 @@
-import React, { ComponentProps } from "react";
+import React from "react";
 import {
-    chakra,
-    Box,
     Flex,
     Text,
-    IconButton,
-    Button,
     Stack,
+    Button,
     Collapse,
-    useColorModeValue,
-    useBreakpointValue,
+    IconButton,
     useDisclosure,
+    useBreakpointValue,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
 import { NavItem } from "./nav-item";
 import { DesktopNav } from "./navbar-desktop.component";
 import { MobileNav } from "./navbar-mobile.component";
-
-const NavbarWrapper = chakra(Box);
-
-const CollapsibleNavbar: React.FC<ComponentProps<typeof Collapse>> = ({
-    children,
-    ...props
-}) => (
-    <Collapse animateOpacity {...props}>
-        {children}
-    </Collapse>
-);
-
-const NavbarRowWrapper = chakra(Flex, {
-    baseStyle: {
-        minH: "60px",
-        py: { base: 2 },
-        px: { base: 4 },
-        borderBottom: 1,
-        borderStyle: "solid",
-        align: "center",
-        bg: "white",
-        color: "gray.600",
-        borderColor: "gray.200",
-    },
-});
+import {
+    NavbarRow,
+    NavbarContainer,
+    IconContainerMobile,
+} from "./navbar.styles";
 
 export const Navbar: React.FC<{ navItems: Array<NavItem> }> = ({
     navItems,
@@ -49,13 +26,9 @@ export const Navbar: React.FC<{ navItems: Array<NavItem> }> = ({
     const { isOpen, onToggle } = useDisclosure();
 
     return (
-        <NavbarWrapper>
-            <NavbarRowWrapper>
-                <Flex
-                    flex={{ base: 1, md: "auto" }}
-                    ml={{ base: -2 }}
-                    display={{ base: "flex", md: "none" }}
-                >
+        <NavbarContainer>
+            <NavbarRow>
+                <IconContainerMobile>
                     <IconButton
                         onClick={onToggle}
                         icon={
@@ -65,10 +38,10 @@ export const Navbar: React.FC<{ navItems: Array<NavItem> }> = ({
                                 <HamburgerIcon w={5} h={5} />
                             )
                         }
-                        variant={"ghost"}
-                        aria-label={"Toggle Navigation"}
+                        variant="ghost"
+                        aria-label="Toggle Navigation"
                     />
-                </Flex>
+                </IconContainerMobile>
 
                 <Flex
                     flex={{ base: 1 }}
@@ -82,7 +55,7 @@ export const Navbar: React.FC<{ navItems: Array<NavItem> }> = ({
                         })}
                         margin="0px"
                         fontFamily={"heading"}
-                        color={useColorModeValue("gray.800", "white")}
+                        color="gray.800"
                     >
                         Logo
                     </Text>
@@ -112,11 +85,11 @@ export const Navbar: React.FC<{ navItems: Array<NavItem> }> = ({
                         Get In Touch
                     </Button>
                 </Stack>
-            </NavbarRowWrapper>
+            </NavbarRow>
 
-            <CollapsibleNavbar in={isOpen}>
+            <Collapse in={isOpen} animateOpacity>
                 <MobileNav navItems={navItems} />
-            </CollapsibleNavbar>
-        </NavbarWrapper>
+            </Collapse>
+        </NavbarContainer>
     );
 };
