@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
-import { NavItem } from "./nav-item";
+import { NavItem } from "../../../interfaces/nav-item";
 import { DesktopNav } from "./navbar-desktop.component";
 import { MobileNav } from "./navbar-mobile.component";
 import {

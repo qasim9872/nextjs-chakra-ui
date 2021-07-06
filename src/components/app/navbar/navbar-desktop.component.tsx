@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 
-import { NavItem } from "./nav-item";
+import { NavItem } from "../../../interfaces/nav-item";
 
 export const DesktopNav: React.FC<{ navItems: Array<NavItem> }> = ({
     navItems,

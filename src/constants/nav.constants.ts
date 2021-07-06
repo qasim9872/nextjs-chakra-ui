@@ -1,4 +1,4 @@
-import { NavItem } from "@components/app/navbar/nav-item";
+import { NavItem } from "src/interfaces/nav-item";
 
 export const navItems: Array<NavItem> = [
     {

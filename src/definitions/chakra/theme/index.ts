@@ -16,6 +16,7 @@ import components from "./components";
 const overrides = {
     ...styles,
     colors,
+    space: { md: "16px" },
     fontSizes,
     components,
 };
