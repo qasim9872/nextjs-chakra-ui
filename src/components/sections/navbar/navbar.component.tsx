@@ -1,36 +1,28 @@
 import React from "react";
 import { Box, Flex, Button, useDisclosure } from "@chakra-ui/react";
 
-import { Logo } from "@components/ui/logo/logo.component";
-import { MenuItem } from "./menu-item";
-import { MobileToggle } from "./mobile-toggle";
-import { NavItem } from "src/interfaces/nav-item";
+import { NavItem } from "./nav-item.component";
+import { MobileToggle } from "./mobile-toggle.component";
+import { NavItems } from "src/interfaces/nav-item";
+import { NavbarLogo } from "./navbar-logo.component";
 
-export const Header: React.FC<{ navItems: NavItem[] }> = (props) => {
+export const Navbar: React.FC<{ navItems: NavItems }> = (props) => {
     const { isOpen, onToggle } = useDisclosure();
 
     return (
         <Flex
+            p={8}
+            mb={8}
             as="nav"
+            w="100%"
+            wrap="wrap"
             align="center"
             justify="space-between"
-            wrap="wrap"
-            w="100%"
-            mb={8}
-            p={8}
-            bg={["brand.500", "brand.500", "transparent", "transparent"]}
-            color={["white", "white", "brand.700", "brand.700"]}
+            bg={{ base: "brand:500", lg: "transparent" }}
+            color={{ base: "white", lg: "brand.700" }}
             {...props}
         >
-            <Flex align="center">
-                <Logo
-                    textAlign={{
-                        base: "center",
-                        md: "left",
-                    }}
-                    color={{ base: "white", lg: "brand.500" }}
-                />
-            </Flex>
+            <NavbarLogo />
 
             <Box display={{ base: "block", md: "none" }} onClick={onToggle}>
                 <MobileToggle isOpen={isOpen} onToggle={onToggle} />
@@ -55,11 +47,11 @@ export const Header: React.FC<{ navItems: NavItem[] }> = (props) => {
                     }}
                     pt={{ base: 4, lg: 0 }}
                 >
-                    <MenuItem to="/">Home</MenuItem>
-                    <MenuItem to="/how">How It works </MenuItem>
-                    <MenuItem to="/faetures">Features </MenuItem>
-                    <MenuItem to="/pricing">Pricing </MenuItem>
-                    <MenuItem to="/signup" isLast>
+                    <NavItem to="/">Home</NavItem>
+                    <NavItem to="/how">How It works </NavItem>
+                    <NavItem to="/faetures">Features </NavItem>
+                    <NavItem to="/pricing">Pricing </NavItem>
+                    <NavItem to="/signup" isLast>
                         <Button
                             size="sm"
                             rounded="md"
@@ -76,7 +68,7 @@ export const Header: React.FC<{ navItems: NavItem[] }> = (props) => {
                         >
                             Create Account
                         </Button>
-                    </MenuItem>
+                    </NavItem>
                 </Flex>
             </Box>
         </Flex>

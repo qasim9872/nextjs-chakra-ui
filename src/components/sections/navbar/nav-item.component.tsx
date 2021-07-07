@@ -2,7 +2,7 @@ import React, { ComponentProps } from "react";
 import { Text } from "@chakra-ui/react";
 import Link from "next/link";
 
-export const MenuItem: React.FC<
+export const NavItem: React.FC<
     {
         isLast?: boolean;
         to: ComponentProps<typeof Link>["href"];

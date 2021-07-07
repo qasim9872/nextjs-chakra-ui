@@ -5,3 +5,5 @@ export interface NavItem {
     subLabel?: string;
     children?: Array<NavItem>;
 }
+
+export type NavItems = NavItem[];
