@@ -1,19 +1,11 @@
-import React from "react";
-import { Text, useBreakpointValue } from "@chakra-ui/react";
+import React, { ComponentProps } from "react";
+import { Text } from "@chakra-ui/react";
 
-export const Logo: React.FC<{ logoText?: string }> = ({
-    logoText = "My Logo",
-}) => {
+export const Logo: React.FC<
+    { logoText?: string } & ComponentProps<typeof Text>
+> = ({ logoText = "My Logo", ...props }) => {
     return (
-        <Text
-            textAlign={useBreakpointValue({
-                base: "center",
-                md: "left",
-            })}
-            margin="0px"
-            fontFamily={"heading"}
-            color="gray.800"
-        >
+        <Text fontSize="lg" fontFamily={"heading"} {...props}>
             {logoText}
         </Text>
     );

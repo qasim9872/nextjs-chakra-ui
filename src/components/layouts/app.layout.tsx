@@ -5,7 +5,6 @@ import { Footer } from "@components/sections/footer/footer";
 import { Header } from "@components/sections/header/header.component";
 
 import { navItems } from "src/constants/nav.constants";
-import { Logo } from "@components/ui/logo/logo.component";
 
 export const AppLayout: React.FC = ({ children }) => {
     return (
@@ -16,7 +15,7 @@ export const AppLayout: React.FC = ({ children }) => {
             direction="column"
             maxW={{ xl: "1200px" }}
         >
-            <Header navItems={navItems} Logo={() => <Logo logoText="Logo" />} />
+            <Header navItems={navItems} />
 
             <Flex flexGrow={1}>{children}</Flex>
             <Footer />

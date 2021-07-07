@@ -4,8 +4,9 @@ import { Box, Flex, Button, useDisclosure } from "@chakra-ui/react";
 import { Logo } from "@components/ui/logo/logo.component";
 import { MenuItem } from "./menu-item";
 import { MobileToggle } from "./mobile-toggle";
+import { NavItem } from "src/interfaces/nav-item";
 
-export const Header = (props) => {
+export const Header: React.FC<{ navItems: NavItem[] }> = (props) => {
     const { isOpen, onToggle } = useDisclosure();
 
     return (
@@ -22,7 +23,13 @@ export const Header = (props) => {
             {...props}
         >
             <Flex align="center">
-                <Logo />
+                <Logo
+                    textAlign={{
+                        base: "center",
+                        md: "left",
+                    }}
+                    color={{ base: "white", lg: "brand.500" }}
+                />
             </Flex>
 
             <Box display={{ base: "block", md: "none" }} onClick={onToggle}>
@@ -35,14 +42,18 @@ export const Header = (props) => {
             >
                 <Flex
                     align="center"
-                    justify={[
-                        "center",
-                        "space-between",
-                        "flex-end",
-                        "flex-end",
-                    ]}
-                    direction={["column", "row", "row", "row"]}
-                    pt={[4, 4, 0, 0]}
+                    justify={{
+                        base: "center",
+                        md: "space-between",
+                        lg: "flex-end",
+                    }}
+                    direction={{
+                        base: "column",
+                        md: "row",
+                        lg: "row",
+                        xl: "row",
+                    }}
+                    pt={{ base: 4, lg: 0 }}
                 >
                     <MenuItem to="/">Home</MenuItem>
                     <MenuItem to="/how">How It works </MenuItem>
