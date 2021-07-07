@@ -1,11 +1,11 @@
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 
-import { Footer } from "@components/app/footer/footer";
-import { Navbar } from "@components/app/navbar/navbar.component";
+import { Footer } from "@components/sections/footer/footer";
+import { Navbar } from "@components/sections/navbar/navbar.component";
 
 import { navItems } from "src/constants/nav.constants";
-import { Logo } from "@components/app/logo/logo.component";
+import { Logo } from "@components/ui/logo/logo.component";
 
 export const AppLayout: React.FC = ({ children }) => {
     return (
